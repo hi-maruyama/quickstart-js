@@ -36,18 +36,22 @@ limitations under the License.
 
   <script type="text/javascript">
 
-    /**
-     * Handles the sign in button press.
-     */
+    //
+    //  signイン、signアウトのトグルボタンハンドラー
+    //
     function toggleSignIn() {
       if (firebase.auth().currentUser) {
-        // [START signout]
+        // ログイン状態の場合
+
+        // signアウトする
         firebase.auth().signOut();
-        // [END signout]
       } else {
-        // [START authanon]
+        // 未ログイン状態の場合
+
+        // 匿名signインを試みる
         firebase.auth().signInAnonymously().catch(function(error) {
-          // Handle Errors here.
+          // 匿名signインがエラーになった場合
+
           var errorCode = error.code;
           var errorMessage = error.message;
           // [START_EXCLUDE]
@@ -56,9 +60,9 @@ limitations under the License.
           } else {
             console.error(error);
           }
-          // [END_EXCLUDE]
+
         });
-        // [END authanon]
+
       }
       document.getElementById('quickstart-sign-in').disabled = true;
     }
@@ -70,36 +74,44 @@ limitations under the License.
      *    out, and that is where we update the UI.
      */
     function initApp() {
-      // Listening for auth state changes.
-      // [START authstatelistener]
+      console.log('init App START');
+      
+      // authステータス変更を監視する
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-          // User is signed in.
+          // 認証ユーザーの場合
+          console.log('signイン', JSON.stringify(user, null, '  '));
+          
           var isAnonymous = user.isAnonymous;
           var uid = user.uid;
-          // [START_EXCLUDE]
+
+          // 画面の表示を更新する
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
           document.getElementById('quickstart-sign-in').textContent = 'Sign out';
           document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
-          // [END_EXCLUDE]
+
         } else {
-          // User is signed out.
-          // [START_EXCLUDE]
+          console.log('signアウト');
+
+          // 画面の表示を更新する
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
           document.getElementById('quickstart-sign-in').textContent = 'Sign in';
           document.getElementById('quickstart-account-details').textContent = 'null';
-          // [END_EXCLUDE]
+
         }
-        // [START_EXCLUDE]
+
         document.getElementById('quickstart-sign-in').disabled = false;
-        // [END_EXCLUDE]
+
       });
       // [END authstatelistener]
 
       document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+      
+      console.log('init App END');
     }
 
     window.onload = function() {
+      // ここが全ての始まり
       initApp();
     };
   </script>
