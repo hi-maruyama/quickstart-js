@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
   <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 
+  <script src="scripts/debug.js"></script>
   <link rel="stylesheet" href="main.css">
 
 </head>
@@ -50,6 +51,7 @@
 
 
   <!-- Splash screen -->
+  <!-- 未ログインTOPページ -->
   <section id="page-splash">
     <h3 class="logo">Database Web Quickstart</h3>
     <div>
@@ -68,15 +70,19 @@
     <!-- Navigation Bar -->
     <div class="tab mdl-layout__header-row mdl-color--light-blue-600">
       <div class="mdl-tab">
+        <!-- 最近投稿ボタン -->
         <div id="menu-recent" class="mdl-layout__tab is-active mdl-button mdl-js-button mdl-js-ripple-effect">
           <i class="material-icons">new_releases</i> Recent
         </div>
+        <!-- 自分の投稿ボタン -->
         <div id="menu-my-posts" class="mdl-layout__tab mdl-button mdl-js-button mdl-js-ripple-effect">
           <i class="material-icons">home</i> My posts
         </div>
+        <!-- 自分のTOP投稿ボタン -->
         <div id="menu-my-top-posts" class="mdl-layout__tab mdl-button mdl-js-button mdl-js-ripple-effect">
           <i class="material-icons">trending_up</i> My top posts
         </div>
+        <!-- 丸い黄色の新規入力フォームボタン -->
         <button class="mdl-button mdl-js-button mdl-button--fab mdl-color--amber-400 mdl-shadow--4dp mdl-js-ripple-effect" id="add">
           <i class="material-icons">mode_edit</i>
         </button>
@@ -87,6 +93,7 @@
   <main class="mdl-layout__content mdl-color--grey-100">
 
     <!-- Show the add post form -->
+    <!-- 新規POST入力画面 -->
     <section class="mdl-grid content" id="add-post" style="display:none">
       <div class="mdl-cell mdl-cell--12-col mdl-grid">
 
@@ -98,10 +105,12 @@
             </div>
             <div class="mdl-card__supporting-text mdl-color-text--grey-600">
               <form id="message-form" action="#">
+                <!-- タイトルフォーム -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" type="text" id="new-post-title">
                   <label class="mdl-textfield__label" for="new-post-title">Post title...</label>
                 </div>
+                <!-- メッセージフォーム -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <textarea class="mdl-textfield__input" rows="3" id="new-post-message"></textarea>
                   <label class="mdl-textfield__label" for="new-post-message">Post message...</label>
@@ -115,21 +124,24 @@
       </div>
     </section>
 
-    <!-- Show a list of recent posts -->
+    <!-- 最近のPOST -->
     <section class="mdl-grid content" id="recent-posts-list" style="display:none">
       <div class="posts-container mdl-cell mdl-cell--12-col mdl-grid">
+        <!-- ここに投稿<DIV>が追加される -->
       </div>
     </section>
 
-    <!-- Show the list of user's posts -->
+    <!-- sign in ユーザーのPOST -->
     <section class="mdl-grid content" id="user-posts-list" style="display:none">
       <div class="posts-container mdl-cell mdl-cell--12-col mdl-grid">
+        <!-- ここに投稿<DIV>が追加される -->
       </div>
     </section>
 
     <!-- Show the list of top user's posts -->
     <section class="mdl-grid content" id="top-user-posts-list" style="display:none">
       <div class="posts-container mdl-cell mdl-cell--12-col mdl-grid">
+        <!-- ここに投稿<DIV>が追加される -->
       </div>
     </section>
   </main>

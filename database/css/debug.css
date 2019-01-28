@@ -1,0 +1,73 @@
+/*
+<div id="jogi">a</div>
+<div id="textview"></div>
+<div class="buttons">
+    <input type="button" value="B1" onclick="f1();"  style="background-color:gray;" />
+    <input type="button" value="B2" onclick="f2();"  style="background-color:gray;" />
+    <input type="button" value="B3" onclick="f3();" style="background-color:gray;" />
+    <input type="button" value="B4" onclick="f4();" style="background-color:gray;" />
+    <input type="button" value="B5" onclick="f5();" style="background-color:gray;" />
+    <input type="button" value="B6" onclick="f6();" style="background-color:gray;" />
+    <input type="button" value="B7" onclick="f7();" style="background-color:gray;" />
+</div>
+*/
+#shadow {
+  text-shadow: 10px 10px 0px white;
+  -webkit-text-stroke: 2px white;
+}
+
+pre#textview {
+  position: absolute;
+  z-index: 10;
+  top: 250px;
+  left: 100px;
+  width: 1500px;
+  height: 250px;
+  border: solid 2px gray;
+  font-size: 15px;
+  overflow: scroll;
+  background-color: #fffffa;
+  opacity: 0.7;
+}
+
+.buttons {
+  position: fixed;
+  top: 600px;
+  left: 20px;
+  /*background-color: #66aabb*/
+}
+
+input[type=button] {
+  font-size: 25px;
+  width: 52px;
+  height: 60px;
+  background-color: #c3e6ae;
+}
+
+div#jogi {
+  position: fixed;
+  z-index: -10;
+  /*width: 1280px;
+  height: 800px;*/
+  width: 1707px;
+  height: 1067px;
+  background-color: clear;
+  border: solid 1px;
+}
+
+div.page {
+  position: absolute;
+  top: 0px;
+  z-index: 0;
+  width: 1707px;
+  height: 1067px;
+}
+div.page#cover {
+  z-index: 3;
+  opacity: 0.5;
+  background-color: lightgray;
+}
+
+/*# sourceMappingURL=debug.css.map */
+
+/*# sourceMappingURL=debug.css.map */

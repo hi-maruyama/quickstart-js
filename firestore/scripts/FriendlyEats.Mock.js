@@ -15,13 +15,16 @@
  */
 'use strict';
 
-/**
- * Adds a set of mock Restaurants to the Cloud Firestore.
- */
+//
+//  Firestoreへレストランを追加する
+//
 FriendlyEats.prototype.addMockRestaurants = function() {
+  console.log('addMockRestaurants start');
+
   var promises = [];
 
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 3; i++) {
+    // レストランの名前をランダムに決める
     var name =
         this.getRandomItem(this.data.words) +
         ' ' +
@@ -34,6 +37,7 @@ FriendlyEats.prototype.addMockRestaurants = function() {
     var numRatings = 0;
     var avgRating = 0;
 
+    // レストランを新規作成する
     var promise = this.addRestaurant({
       name: name,
       category: category,
@@ -52,22 +56,30 @@ FriendlyEats.prototype.addMockRestaurants = function() {
     }
   }
 
+  console.log('addMockRestaurants end');
+
   return Promise.all(promises);
 };
 
-/**
- * Adds a set of mock Ratings to the given Restaurant.
- */
+
+//
+//  レートをランダムに1〜5回生成する
+//
 FriendlyEats.prototype.addMockRatings = function(restaurantID) {
+  console.log('addMockRatings start');
+
   var ratingPromises = [];
   for (var r = 0; r < 5*Math.random(); r++) {
+    // ランダムにレート辞書を取得する
     var rating = this.data.ratings[
       parseInt(this.data.ratings.length*Math.random())
     ];
     rating.userName = 'Bot (Web)';
     rating.timestamp = new Date();
     rating.userId = firebase.auth().currentUser.uid;
+    // Firestoreへ新規レートを追加する
     ratingPromises.push(this.addRating(restaurantID, rating));
   }
+
   return Promise.all(ratingPromises);
 };

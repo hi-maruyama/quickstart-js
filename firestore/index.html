@@ -60,9 +60,11 @@
   <div class="dialogs"></div>
 
   <div hidden class="template" id="header-base">
+    <!-- 　検索バーを持つヘッダー -->
       <header id="site-header" class="mdc-toolbar mdc-toolbar--fixed">
         <div id="title" class="mdc-toolbar__row mdc-layout-grid">
           <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+            <!-- フォークとナイフのアイコン画像 -->
             <span class="material-icons mdc-toolbar__icon--menu">restaurant</span>
             <span class="mdc-toolbar__title">FriendlyEats</span>
           </section>
@@ -73,6 +75,7 @@
 
   <div hidden class="template" id="main-adjusted">
     <div id="message-cards-container" class="mdc-layout-grid mdc-toolbar-fixed-adjust">
+      <!-- この cards の中にレストランたちが追加される -->
       <div id="cards" class="mdc-layout-grid__inner"></div>
     </div>
   </div>
@@ -85,6 +88,7 @@
 
   <div hidden class="template" id="no-restaurants">
     <div id="guy-container" class="mdc-toolbar-fixed-adjust">
+      <!-- ピザモンスター画像 -->
       <img class="guy" src="/images/guy_fireats.png" />
       <div class="text">
         This app is connected to the Firebase project "<b data-fir-content="projectId"></b>".<br />
@@ -92,24 +96,27 @@
         Your Cloud Firestore has no documents in <b>/restaurants/</b>.
       </div>
       <br />
+      <!-- モックをStoreへ作成するボタン -->
       <a class="mdc-button" id="add_mock_data">
         Add mock data
       </a>
     </div>
   </div>
 
+  <!-- レストランにレートが存在しなかった場合に表示される -->
   <div hidden class="template" id="no-ratings">
-      <div id="guy-container" class="mdc-toolbar-fixed-adjust">
-        <img class="guy" src="/images/guy_fireats.png" />
-        <div class="text">
-          This restaurant has no ratings.<br />
-        </div>
-        <br />
-        <a class="mdc-button" data-fir-click="add_mock_data">
-          Add mock ratings
-        </a>
+    <div id="guy-container" class="mdc-toolbar-fixed-adjust">
+      <img class="guy" src="/images/guy_fireats.png" />
+      <div class="text">
+        This restaurant has no ratings.<br />
       </div>
+      <br />
+      <!-- Firestoreへレートを追加するボタン -->
+      <a class="mdc-button" data-fir-click="add_mock_data">
+        Add mock ratings
+      </a>
     </div>
+  </div>
 
   <div hidden class="template" id="no-results">
     <div id="guy-container" class="mdc-toolbar-fixed-adjust">
@@ -130,7 +137,7 @@
       </div>
     </div>
   </div>
-
+  <!-- レストランページのヘッダー -->
   <div hidden class="template" id="restaurant-header">
     <header class="mdc-layout__header mdc-layout__header--transparent" data-fir-style="backgroundImage:photo">
 
@@ -163,6 +170,7 @@
   <div hidden class="template" id="rating"></div>
   <span hidden class="template" id="price"></span>
 
+  <!-- レストランページのレビュー1個分 -->
   <div hidden class="template mdc-layout-grid__cell--span-12" id="review-card">
     <div class="review max_width_600">
         <div class="header">
@@ -175,15 +183,21 @@
     </div>
   </div>
 
+  <!-- レストラン用カード -->
   <div hidden class="template mdc-layout-grid__cell mdc-layout-grid__cell--span-4" id="restaurant-card">
+    <!-- クリックイベント用DIV -->
     <div class="location-card mdc-card mdc-shadow--2dp" data-fir-click="go_to_restaurant">
+      <!-- レストラン画像 -->
       <div class="mdc-card__title" data-fir-style="backgroundImage:photo"></div>
       <div class="mdc-card__supporting-text">
+        <!-- レストランの名前 -->
         <h2 data-fir-content="name">...</h2>
         <span class="info price"></span>
+        <!-- スターのレート -->
         <div class="details">
           <div class="rating"></div>
         </div>
+        <!-- カテゴリーと都市名 -->
         <div class="details">
           <span class="info" data-fir-content="category"></span>
           <span class="light">●</span>

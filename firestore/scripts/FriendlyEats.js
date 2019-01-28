@@ -15,10 +15,13 @@
  */
 'use strict';
 
-/**
- * Initializes the FriendlyEats app.
- */
+//
+//  本FriendlyEatsアプリを初期化する
+//
 function FriendlyEats() {
+  console.log('FriendlyEats start');
+  
+  // フィルター辞書を初期化する
   this.filters = {
     city: '',
     price: '',
@@ -30,44 +33,64 @@ function FriendlyEats() {
 
   var that = this;
 
+  // Firestoreインスタンスをカスタムするための設定をする
   firebase.firestore().settings({
+    // DateでなくTimestampの使用を強制する。# 将来的な標準になる
     timestampsInSnapshots: true
   });
 
+  // 可能であれば永続的ストレージを有効にする
   firebase.firestore().enablePersistence()
     .then(function() {
+      console.log('永続的ストレージの使用OK');
+      console.log('匿名ユーザーとして非同期にサインインする');
       return firebase.auth().signInAnonymously();
     })
     .then(function() {
+      // templatesクラスの要素を検出して保持する
       that.initTemplates();
       that.initRouter();
       that.initReviewDialog();
       that.initFilterDialog();
     }).catch(function(err) {
+      // 永続的ストレージの使用がリジェクトされた
+      console.log('ERROR: 永続的ストレージの使用がリジェクトされた');
       console.log(err);
     });
+
+    console.log('FriendlyEats end');
 }
 
-/**
- * Initializes the router for the FriendlyEats app.
- */
+//
+//  このアプリのルーターを初期化する
+//
 FriendlyEats.prototype.initRouter = function() {
+  console.log('initRouter start');
+
+  // navigoを生成する
   this.router = new Navigo();
 
   var that = this;
+
+  // ルーティングをセットする
   this.router
     .on({
       '/': function() {
+        console.log('/ を表示します');
+        
         that.updateQuery(that.filters);
       }
     })
     .on({
       '/setup': function() {
+        console.log('/setup を表示します');
         that.viewSetup();
       }
     })
     .on({
       '/restaurants/*': function() {
+        console.log('/restaurants/* を表示します');
+        // URLからdocumentIDを取得する
         var path = that.getCleanPath(document.location.pathname);
         var id = path.split('/')[2];
         that.viewRestaurant(id);
@@ -75,30 +98,39 @@ FriendlyEats.prototype.initRouter = function() {
     })
     .resolve();
 
+  // restaurants コレクションにドキュメントが存在するか確認する
   firebase
     .firestore()
     .collection('restaurants')
     .limit(1)
     .onSnapshot(function(snapshot) {
       if (snapshot.empty) {
+        console.log('initRouter(): restaurantsコレクションにDocumentが存在しません /setup　へ移動');
         that.router.navigate('/setup');
       }
     });
+
+  console.log('initRouter end');
 };
 
 FriendlyEats.prototype.getCleanPath = function(dirtyPath) {
+  console.log('getCleanPath start');
   if (dirtyPath.startsWith('/index.html')) {
     return dirtyPath.split('/').slice(1).join('/');
   } else {
     return dirtyPath;
   }
+  console.log('getCleanPath end');
 };
 
 FriendlyEats.prototype.getFirebaseConfig = function() {
+  console.log('本Firebaseアプリのoptionsを取得する options:' + firebase.app().options);
   return firebase.app().options;
 };
 
+// レストランの名前をランダムに決める時に使う
 FriendlyEats.prototype.getRandomItem = function(arr) {
+  // console.log('getRandomItem');
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
@@ -201,6 +233,9 @@ FriendlyEats.prototype.data = {
   ]
 };
 
+// ここが全ての始まり
 window.onload = function() {
+  console.log('onload start');  
   window.app = new FriendlyEats();
+  console.log('onload end');  
 };
