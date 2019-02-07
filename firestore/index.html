@@ -59,6 +59,7 @@
 
   <div class="dialogs"></div>
 
+  <!-- テンプレート1 -->
   <div hidden class="template" id="header-base">
     <!-- 　検索バーを持つヘッダー -->
       <header id="site-header" class="mdc-toolbar mdc-toolbar--fixed">
@@ -73,6 +74,7 @@
       </header>
   </div>
 
+  <!-- テンプレート2 -->
   <div hidden class="template" id="main-adjusted">
     <div id="message-cards-container" class="mdc-layout-grid mdc-toolbar-fixed-adjust">
       <!-- この cards の中にレストランたちが追加される -->
@@ -80,12 +82,14 @@
     </div>
   </div>
 
+  <!-- テンプレート3 -->
   <div hidden class="template" id="main">
     <div id="message-cards-container" class="mdc-layout-grid">
       <div id="cards" class="mdc-layout-grid__inner"></div>
     </div>
   </div>
 
+  <!-- テンプレート4 -->
   <div hidden class="template" id="no-restaurants">
     <div id="guy-container" class="mdc-toolbar-fixed-adjust">
       <!-- ピザモンスター画像 -->
@@ -103,6 +107,7 @@
     </div>
   </div>
 
+  <!-- テンプレート5 -->
   <!-- レストランにレートが存在しなかった場合に表示される -->
   <div hidden class="template" id="no-ratings">
     <div id="guy-container" class="mdc-toolbar-fixed-adjust">
@@ -118,6 +123,7 @@
     </div>
   </div>
 
+  <!-- テンプレート6 -->
   <div hidden class="template" id="no-results">
     <div id="guy-container" class="mdc-toolbar-fixed-adjust">
       <img class="guy" src="/images/guy_fireats.png" />
@@ -127,6 +133,7 @@
     </div>
   </div>
 
+  <!-- テンプレート7 -->
   <div hidden class="template" id="filter-display">
     <div id="filter" class="mdc-toolbar mdc-layout-grid">
       <div id="show-filters" >
@@ -137,6 +144,8 @@
       </div>
     </div>
   </div>
+
+  <!-- テンプレート7 -->
   <!-- レストランページのヘッダー -->
   <div hidden class="template" id="restaurant-header">
     <header class="mdc-layout__header mdc-layout__header--transparent" data-fir-style="backgroundImage:photo">
@@ -167,9 +176,12 @@
     </header>
   </div>
 
+  <!-- テンプレート8 -->
   <div hidden class="template" id="rating"></div>
+  <!-- テンプレート9 -->
   <span hidden class="template" id="price"></span>
 
+  <!-- テンプレート10 -->
   <!-- レストランページのレビュー1個分 -->
   <div hidden class="template mdc-layout-grid__cell--span-12" id="review-card">
     <div class="review max_width_600">
@@ -183,6 +195,7 @@
     </div>
   </div>
 
+  <!-- テンプレート11 -->
   <!-- レストラン用カード -->
   <div hidden class="template mdc-layout-grid__cell mdc-layout-grid__cell--span-4" id="restaurant-card">
     <!-- クリックイベント用DIV -->
@@ -208,13 +221,17 @@
     </div>
   </div>
 
+  <!-- テンプレート12 -->
   <i hidden class="template material-icons" id="star-border-icon">star_border</i>
+  <!-- テンプレート13 -->
   <i hidden class="template material-icons" id="star-icon">star</i>
 
+  <!-- テンプレート14 -->
   <ul hidden class="template mdc-list" id="item-list">
       <li class="mdc-list-item" data-mdc-auto-init="MDCRipple" data-fir-foreach="items" data-fir-content="~"></li>
   </ul>
 
+  <!-- テンプレート15 -->
   <ul hidden class="template mdc-list" id="all-filters-list">
     <li id="show-page-category" class="mdc-list-item" data-mdc-auto-init="MDCRipple">
       <i class="material-icons">fastfood</i>

@@ -25,7 +25,7 @@ FriendlyEats.prototype.initTemplates = function() {
   var that = this;
   // templateクラスを検索する
   document.querySelectorAll('.template').forEach(function(el) {
-    // id名をキーにして要素を保存する
+    // id名をキーにしてDOM要素を保存する
     that.templates[el.getAttribute('id')] = el;
   });
 
